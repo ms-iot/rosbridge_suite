@@ -51,6 +51,7 @@ from rosbridge_library.capabilities.unadvertise_service import UnadvertiseServic
 from rosbridge_library.capabilities.call_service import CallService
 
 from std_msgs.msg import Int32
+import ptvsd
 
 def shutdown_hook():
     IOLoop.instance().stop()

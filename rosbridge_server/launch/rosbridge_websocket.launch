@@ -9,7 +9,7 @@
 
   <arg name="fragment_timeout" default="600" />
   <arg name="delay_between_messages" default="0" />
-  <arg name="max_message_size" default="None" />
+  <arg name="max_message_size" default="10485760" />
   <arg name="unregister_timeout" default="10" />
 
   <arg name="use_compression" default="false" />
@@ -25,7 +25,7 @@
   <arg unless="$(arg bson_only_mode)" name="binary_encoder" default="default"/>
 
   <group if="$(arg ssl)">
-    <node name="rosbridge_websocket" pkg="rosbridge_server" type="rosbridge_websocket" output="screen">
+    <node name="rosbridge_websocket" pkg="rosbridge_server" type="rosbridge_websocket.py" output="screen">
       <param name="certfile" value="$(arg certfile)" />
       <param name="keyfile" value="$(arg keyfile)" />
       <param name="authenticate" value="$(arg authenticate)" />
@@ -44,7 +44,7 @@
     </node>
   </group>
   <group unless="$(arg ssl)">
-    <node name="rosbridge_websocket" pkg="rosbridge_server" type="rosbridge_websocket" output="screen">
+    <node name="rosbridge_websocket" pkg="rosbridge_server" type="rosbridge_websocket.py" output="screen">
       <param name="authenticate" value="$(arg authenticate)" />
       <param name="port" value="$(arg port)"/>
       <param name="address" value="$(arg address)"/>
