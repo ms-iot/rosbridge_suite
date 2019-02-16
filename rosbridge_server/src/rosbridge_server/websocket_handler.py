@@ -134,7 +134,7 @@ class RosbridgeWebSocket(WebSocketHandler):
             binary = False
 
         with self._write_lock:
-            IOLoop.instance().add_callback(self.prewrite_message, message, binary))
+            IOLoop.instance().add_callback(self.prewrite_message, message, binary)
 
     @coroutine
     def prewrite_message(self, message, binary):
